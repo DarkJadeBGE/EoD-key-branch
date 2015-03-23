@@ -1,5 +1,5 @@
 <?php
-    $page_title = 'Insert Electricity Usage';
+    $page_title = 'Insert Electricity Demand';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         require ('db_connect_dataretriever.php');
@@ -12,10 +12,10 @@
             $idBuildings = mysqli_real_escape_string($dbc, trim($_POST['idBuildings']));
         }
 
-        if (empty($_POST['Usage'])) {
-            $errors[] = 'Invalid Amount Usage';
+        if (empty($_POST['Demand'])) {
+            $errors[] = 'Invalid Amount Demand';
         } else {
-            $Usage = mysqli_real_escape_string($dbc, trim($_POST['Usage']));
+            $Demand = mysqli_real_escape_string($dbc, trim($_POST['Demand']));
         }
 
         if (empty($_POST['Units'])) {
@@ -32,12 +32,12 @@
 
        
         if (empty($errors)) {
-            $insertElectricityUsage = "INSERT INTO ElectricityUsage (idBuildings, Usage, Units, Date/Time) 
-            VALUES ('$idBuildings', '$Usage', '$Units', 'Date/Time')";
-            $ElectricityUsageInsertion = @mysqli_query($dbc, $insertElectricityUsage);
-            if ($ElectricityUsageInsertion) {
+            $insertElectricityDemand = "INSERT INTO ElectricityDemand (idBuildings, Demand, Units, Date/Time) 
+            VALUES ('$idBuildings', '$Demand', '$Units', 'Date/Time')";
+            $ElectricityDemandInsertion = @mysqli_query($dbc, $insertElectricityDemand);
+            if ($ElectricityDemandInsertion) {
 		}else{
-                echo "Operation Failed" . $insertElectricityUsage;
+                echo "Operation Failed" . $insertElectricityDemand;
             }
 
             # Close database connection.

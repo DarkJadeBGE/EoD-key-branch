@@ -21,7 +21,7 @@
         if (empty($_POST['Units'])) {
             $errors[] = 'Invalid Units';
         } else {
-            $Units = mysqli_real_escape_string($dbc, trim($_POST['PubTitle']));
+            $Units = mysqli_real_escape_string($dbc, trim($_POST['Units']));
         }
 
         if (empty($_POST['Date/Time'])) {
